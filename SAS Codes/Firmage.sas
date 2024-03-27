@@ -1,0 +1,48 @@
+*this program creates the firm age;
+libname tmp1 '\\apporto.com\dfs\SEA\Users\s10_sea\Downloads\SAS_datacodes';
+run;
+data a1; set tmp1.firmageraw;
+data a2; set a1;
+if at="." then delete;
+gvkey2=gvkey*1;
+nyear=year(datadate);
+if not missing(nyear);
+if not missing(gvkey2);
+proc sort nodupkey; by gvkey2 nyear;
+data a3; set a2;
+drop consol indfmt datafmt popsrc curcd costat tic fyear datadate;
+data a4; set a3;
+proc sort nodupkey; by gvkey2 nyear;
+
+data a5; set a4;
+by gvkey2;
+first=first.gvkey2;
+run;
+data a6; set a5;
+if first=1;
+if first=1 then firstyear=nyear;
+keep gvkey2 cusip firstyear;
+
+data a7;
+merge a4 a6;
+by gvkey2;
+proc sort nodupkey; by gvkey2 nyear;
+data a8; set a7;
+age=log(nyear - firstyear + 1);
+if nyear>=1975;
+data a9; set a8;
+keep gvkey2 cusip nyear age;
+proc sort nodupkey; by gvkey2 nyear;
+data a10; set a9;
+data tmp1.firmageall1; set a10;
+data tmp1.firmageall2; set a10;
+data tmp1.firmageall3; set a10;
+data tmp1.firmageall4; set a10;
+data tmp1.firmageall5; set a10;
+data tmp1.firmageall6; set a10;
+data tmp1.firmageall7; set a10;
+data tmp1.firmageall8; set a10;
+data tmp1.firmageall9; set a10;
+data tmp1.firmageall10; set a10;
+proc means; run;
+

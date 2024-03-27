@@ -1,0 +1,34 @@
+*this program creates the Research and Development;
+libname tmp1 '\\apporto.com\dfs\SEA\Users\s10_sea\Downloads\SAS_datacodes';
+run;
+data a1; set tmp1.rdraw;
+gvkey2=gvkey*1;
+nyear=year(datadate);
+if missing(xrd)then xrd=0;
+if not missing(nyear);
+if not missing(gvkey2);
+if not missing(at);
+if at = 0 then delete;
+keep gvkey2  cusip nyear xrd at;
+proc sort nodupkey; by gvkey2 nyear;
+data a2; set a1;
+xrd2 = xrd/at;
+if xrd2 ne "."; 
+if nyear>=1975;
+data a3; set a2;
+keep gvkey2 cusip nyear xrd2;
+proc sort nodupkey; by gvkey2 nyear;
+data a4; set a3;
+data tmp1.rdall1; set a4;
+data tmp1.rdall2; set a4;
+data tmp1.rdall3; set a4;
+data tmp1.rdall4; set a4;
+data tmp1.rdall5; set a4;
+data tmp1.rdall6; set a4;
+data tmp1.rdall7; set a4;
+data tmp1.rdall8; set a4;
+data tmp1.rdall9; set a4;
+data tmp1.rdall10; set a4;
+proc means; run;
+/*proc print data=a4 (obs=500); run;*/
+
