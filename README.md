@@ -1,7 +1,7 @@
 # Optimal Cash Management Analysis for Firms
 
 ## Description:
-This collaborative analysis delves into the estimation of optimal cash levels for individual firms, leveraging rigorous statistical modeling techniques. By scrutinizing key variables and their correlations, the study offers actionable insights to guide firms in optimizing cash flow, refining investment decisions, and capitalizing on managerial expertise and sales growth for sustained financial health. The analysis emphasizes the nuanced understanding required for industry-specific contexts to effectively implement the recommendations derived from the study.
+This project focuses on estimating optimal cash levels for firms by analyzing key predictors influencing cash reserves. Through extensive data preprocessing and statistical modeling, we estimate optimal cash levels for individual firms, shedding light on whether companies maintain surplus or inadequate cash reserves compared to their targets. By scrutinizing key variables and their correlations, our analysis offers actionable insights for firms to optimize cash flow, refine investment decisions, and capitalize on managerial expertise and sales growth for sustained financial health.
 
 ## Key Features:
 1. Methodology focusing on data preprocessing, cleaning, and merging to ensure integrity and reliability.
